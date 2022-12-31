@@ -1,0 +1,6 @@
+top=top
+
+in (SW7, SW6, SW5, SW4, SW3, SW2, SW1, SW0)
+led (LD2, LD1, LD0)
+led_in LD4
+seg0 (SEG0A, SEG0B, SEG0C, SEG0D, SEG0E, SEG0F, SEG0G)
