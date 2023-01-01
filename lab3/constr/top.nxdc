@@ -1,0 +1,9 @@
+top=alu
+
+A (SW3, SW2, SW1, SW0)
+B (SW7, SW6, SW5, SW4)
+sel (SW10, SW9, SW8)
+Result (LD3, LD2, LD1, LD0) 
+overflow LD9
+carry LD8
+zero LD7
