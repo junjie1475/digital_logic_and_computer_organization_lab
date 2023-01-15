@@ -1,9 +1,9 @@
-TOPNAME = top 
+TOPNAME = lfsr 
 NXDC_FILES = constr/top.nxdc
 
 VERILATOR = verilator
 VERILATOR_CFLAGS += -MMD --build -cc  \
-                    -O3 --x-assign fast --x-initial fast --noassert -Wno-MULTIDRIVEN
+                    -O3 --x-assign fast --x-initial fast --noassert
 
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj_dir
@@ -17,12 +17,10 @@ $(SRC_AUTO_BIND): $(NXDC_FILES)
 
 # project source
 VSRCS = ./vsrc/top.v
-VINCS = ./vsrc
 CSRCS = $(shell pwd)/csrc/main.cpp
 CSRCS += $(SRC_AUTO_BIND)
 
 include $(NVBOARD_HOME)/scripts/nvboard.mk
-
 
 INCFLAGS = $(addprefix -I, $(INC_PATH))
 CFLAGS += $(INCFLAGS) -DTOP_NAME="\"V$(TOPNAME)\""
@@ -34,7 +32,7 @@ sim: $(BIN)
 $(BIN): $(VSRCS) $(CSRCS) $(NVBOARD_ARCHIVE)
 	@rm -rf $(OBJ_DIR)
 	$(VERILATOR) $(VERILATOR_CFLAGS) \
-                --top-module $(TOPNAME) $^ -I$(VINCS) \
+                --top-module $(TOPNAME) $^ \
                 $(addprefix -CFLAGS , $(CFLAGS)) $(addprefix -LDFLAGS , $(LDFLAGS)) \
                 --Mdir $(OBJ_DIR) --exe -o $(abspath $(BIN))
 	
