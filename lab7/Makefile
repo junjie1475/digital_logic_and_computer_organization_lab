@@ -3,7 +3,7 @@ NXDC_FILES = constr/top.nxdc
 
 VERILATOR = verilator
 VERILATOR_CFLAGS += -MMD --build -cc  \
-                    -O3 --x-assign fast --x-initial fast --noassert -Wno-MULTIDRIven 
+                    -O3 --x-assign fast --x-initial fast --noassert -Wno-MULTIDRIven -Wno-WIDTHCONCAT -Wno-WIDTH
 
 BUILD_DIR = ./build
 OBJ_DIR = $(BUILD_DIR)/obj_dir
